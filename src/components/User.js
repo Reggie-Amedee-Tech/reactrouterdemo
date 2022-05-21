@@ -15,7 +15,7 @@ const Users = (props) => {
 
 
 
-            <div>
+            <div className="user-detail">
                 {user.map((item) => {
                     return <div key={item.id}>
                     <Link to={`${item.id}`} onClick={() => filterUserId(item.id)}>{item.name}</Link>

@@ -6,8 +6,10 @@ const OrderSummary = () => {
     const navigate = useNavigate()
 
     return <>
+    <div className="user-detail">
         <h1>Order Confirmed!</h1>
         <button onClick={() => {navigate(-1)}}>Go Back</button>
+        </div>
     </>
 }
 

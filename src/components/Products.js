@@ -8,7 +8,7 @@ const Product = () => {
     return (
         <>
         
-        
+        <div className="user-detail">
         <div>
             <input type="search" placeholder="search product"/>
         </div>
@@ -17,6 +17,7 @@ const Product = () => {
             <Link to="new">New</Link>
         </nav>
         <Outlet />
+        </div>
         </>
     )
 }

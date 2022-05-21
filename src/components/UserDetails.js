@@ -21,9 +21,9 @@ const UserDetail = (props) => {
     {specificUser.map((item) => {
         
         return <div>
-            <p>{item.userName}</p>
-            <p>{item.name}</p>
-            <p>{item.email}</p>
+            <p>User Name: {item.userName}</p>
+            <p> Name: {item.name}</p>
+            <p>Email: {item.email}</p>
         </div>
         
     })}
