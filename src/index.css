@@ -25,3 +25,9 @@ nav a.active {
   text-decoration: none;
   font-weight: bold;
 }
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
