@@ -19,7 +19,7 @@ const UserDetail = (props) => {
             {!userFilled ?
                 <>
                     <p>User Not Found</p>
-                    <button onClick={() => { navigate(-1) }}> Go Back</button>
+                    
                 </>
                 :
                 specificUser.map((item) => {

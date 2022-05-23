@@ -1,6 +1,10 @@
 import { Routes, Route} from 'react-router-dom'
+import { AuthProvider } from './components/Auth';
+import { RequireAuth } from './components/RequireAuth';
+import Login from './components/Login';
 import Home from './components/Home';
-import About from './components/About';
+import Profile from './components/Profile';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import OrderSummary from './components/OrderSummary';
 import NoMatch from './components/NoMatch';
@@ -11,8 +15,10 @@ import User from './components/User';
 import UserDetail from './components/UserDetails';
 import Admin from './components/Admin';
 import React, {useState} from "react";
-
 import './App.css';
+const LazyAbout = React.lazy(() => import('./components/About'))
+
+
 
 function App() {
 
@@ -71,11 +77,15 @@ function App() {
 
 
   return (
+    
     <>
+    <AuthProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="about" element={<About />}></Route>
+        <Route path="about" element={<React.Suspense fallback="...loading">
+          <LazyAbout />
+        </React.Suspense>}></Route>
         <Route path='order-summary' element={<OrderSummary />}></Route>
         <Route path="*" element={<NoMatch />}></Route>
         <Route path="products" element={<Product />}>
@@ -86,8 +96,13 @@ function App() {
         <Route path="users" element={<User user={user} filterUserId={filterUserId}/>}>
           <Route path="admin" element={<Admin />} />
         </Route>
+        <Route path="profile" element={<RequireAuth>
+          <Profile />
+          </RequireAuth>}/>
+        <Route path="login" element={<Login />}/>
         <Route path="users/:userId" element={<UserDetail specificUser={specificUser} userFilled={userFilled}/>} />
       </Routes>
+      </AuthProvider>
     </>
   );
 }
